@@ -11,6 +11,8 @@ spec:
         app: neo4j
         component: core
     spec:
+      securityContext:
+        fsGroup: 65533 # nogroup
       containers:
       - name: neo4j
         image: "neo4j:3.3.0-enterprise"
@@ -51,7 +53,7 @@ spec:
         - containerPort: 6362
           name: backup
         securityContext:
-          privileged: true
+          runAsUser: 112
         volumeMounts:
         - name: datadir
           mountPath: "/data"
