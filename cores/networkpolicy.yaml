@@ -1,0 +1,23 @@
+---
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  name: neo4j-core-nodes
+spec:
+  ingress:
+  - ports:
+    - port: 5000
+      protocol: TCP
+    - port: 7000
+      protocol: TCP
+    - port: 6000
+      protocol: TCP
+    - port: 7474
+      protocol: TCP
+    - port: 7687
+      protocol: TCP
+    - port: 6362
+  podSelector:
+    matchLabels:
+      app: neo4j
+      component: core
