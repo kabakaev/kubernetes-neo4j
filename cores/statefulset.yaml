@@ -59,10 +59,12 @@ spec:
           mountPath: "/data"
   volumeClaimTemplates:
     - metadata:
+        annotations:
+          volume.beta.kubernetes.io/storage-class: cinder
         name: datadir
       spec:
         accessModes:
           - ReadWriteOnce
         resources:
           requests:
-            storage: "10Gi"
+            storage: "1Gi"
